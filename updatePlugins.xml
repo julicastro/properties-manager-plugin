@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugins>
+    <plugin id="com.properties.manager" url="https://github.com/julicastro/properties-manager-plugin/releases/download/v1.0.0/properties-manager-plugin-1.0.0.zip" version="1.0.0">
+        <name>Properties Manager - Goose Edition</name>
+        <description><![CDATA[
+            Gestiona archivos app.properties de forma interactiva con checkboxes.
+        ]]></description>
+        <vendor email="properties@manager.com" url="https://github.com/julicastro/properties-manager-plugin">Properties Manager Team</vendor>
+        <idea-version since-build="232" until-build=""/>
+        <change-notes><![CDATA[
+            <h4>Versión 1.0.0</h4>
+            <ul>
+                <li>✨ Versión inicial del plugin</li>
+                <li>🦆 Icono de ganso personalizado</li>
+                <li>📝 Soporte para properties .site, .user y .app</li>
+                <li>🎯 Agrupación automática por prefijos</li>
+                <li>💬 Comentarios como títulos de grupo con checkbox maestro</li>
+                <li>🔄 Preserva orden original del archivo</li>
+            </ul>
+        ]]></change-notes>
+    </plugin>
+</plugins>
+

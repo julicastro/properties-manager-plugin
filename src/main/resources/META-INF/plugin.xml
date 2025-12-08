@@ -1,0 +1,54 @@
+<idea-plugin>
+    <id>com.properties.manager</id>
+    <name>Properties Manager - Goose Edition</name>
+    <version>1.0.0</version>
+    <vendor email="properties@manager.com" url="https://github.com">Properties Manager Team</vendor>
+
+    <description><![CDATA[
+        <h3>🦆 Gestiona tus archivos app.properties de forma interactiva</h3>
+        <p>Plugin diseñado para facilitar la edición de archivos <code>app.properties</code> mediante checkboxes dinámicos.</p>
+        
+        <h4>Características principales:</h4>
+        <ul>
+            <li>📁 Lectura automática de <code>src/main/resources/properties/app.properties</code></li>
+            <li>🔢 Agrupación inteligente por prefijo numérico (1., 2., 3., etc.)</li>
+            <li>✅ Auto-completado de valores según convenciones:
+                <ul>
+                    <li><code>.site</code> → <code>MLA</code></li>
+                    <li><code>.user</code> → <code>1,2,3,4,5,6,7,8,9,0</code></li>
+                    <li><code>.app</code> → <code>LIST,LIST_WEBVIEW</code></li>
+                </ul>
+            </li>
+            <li>💾 Preserva comentarios y estructura del archivo</li>
+            <li>🔄 Botón de refrescar para recargar cambios</li>
+        </ul>
+        
+        <h4>Cómo usar:</h4>
+        <ol>
+            <li>Abre un proyecto con el archivo <code>app.properties</code> en la ruta esperada</li>
+            <li>Busca el panel "Properties Manager" en el lateral derecho</li>
+            <li>Marca/desmarca los checkboxes para activar/desactivar properties</li>
+        </ol>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <h4>Versión 1.0.0</h4>
+        <ul>
+            <li>✨ Versión inicial del plugin</li>
+            <li>🦆 Icono de ganso personalizado</li>
+            <li>📝 Soporte para properties .site, .user y .app</li>
+            <li>🎯 Agrupación automática por prefijos</li>
+        </ul>
+    ]]></change-notes>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow
+            id="Properties Manager"
+            anchor="right"
+            factoryClass="com.properties.manager.PropertiesToolWindowFactory"
+            icon="/icons/goose.png"/>
+    </extensions>
+</idea-plugin>
+
