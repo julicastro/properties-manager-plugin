@@ -52,15 +52,39 @@ Ver instrucciones completas en [INSTALLATION.md](INSTALLATION.md)
 
 ### Para Desarrolladores
 
-```bash
-# Compilar el plugin
-.\gradlew buildPlugin
+#### 🚀 Probar el Plugin (Modo Desarrollo)
 
-# Ejecutar en modo desarrollo (sin instalar)
-.\gradlew runIde
+```bash
+# Abre una nueva ventana de IntelliJ con el plugin ya instalado
+.\gradlew.bat runIde
+```
+
+**Pasos:**
+1. Ejecutar el comando arriba
+2. Esperar que se abra nueva ventana de IntelliJ
+3. En esa ventana: `File → Open` → Abrir proyecto con `app.properties`
+4. Probar el plugin en el panel lateral "Properties Manager"
+
+#### 📦 Compilar el Plugin (Para Release)
+
+```bash
+# Compila y genera el .zip para distribución
+.\gradlew.bat buildPlugin
 ```
 
 El archivo `.zip` se genera en: `build\distributions\properties-manager-plugin-1.0.0.zip`
+
+#### 🔄 Workflow de Desarrollo
+
+```bash
+# 1. Hacer cambios en el código
+# 2. Probar cambios:
+.\gradlew.bat runIde
+
+# 3. Cerrar ventana de prueba
+# 4. Hacer más cambios
+# 5. Repetir paso 2
+```
 
 ## 🚀 Uso
 

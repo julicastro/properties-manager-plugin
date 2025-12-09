@@ -11,7 +11,11 @@ import java.io.InputStreamReader
 class PropertiesFileReader(private val project: Project) {
     
     companion object {
-        private const val PROPERTIES_PATH = "src/main/resources/properties/app.properties"
+        // Multiple possible paths to search for app.properties
+        private val PROPERTIES_PATHS = listOf(
+            "src/main/resources/properties/app.properties",  // Original path
+            "test-project/src/main/resources/properties/app.properties"  // Test project path
+        )
     }
     
     /**
@@ -35,13 +39,22 @@ class PropertiesFileReader(private val project: Project) {
     
     /**
      * Finds the app.properties file in the project.
+     * Searches in multiple possible locations.
      *
      * @return VirtualFile if found, null otherwise
      */
     fun findPropertiesFile(): VirtualFile? {
-        val basePath = project.basePath ?: return null
-        val propertiesFile = project.baseDir?.findFileByRelativePath(PROPERTIES_PATH)
-        return propertiesFile
+        val baseDir = project.baseDir ?: return null
+        
+        // Try each possible path
+        for (path in PROPERTIES_PATHS) {
+            val file = baseDir.findFileByRelativePath(path)
+            if (file != null && file.exists()) {
+                return file
+            }
+        }
+        
+        return null
     }
     
     /**
@@ -83,47 +96,49 @@ class PropertiesFileReader(private val project: Project) {
     }
     
     /**
-     * Groups properties by numeric prefix (e.g., "1.", "2.", etc.).
-     * Preserves comments and original order within each group.
+     * Groups properties by comment blocks.
+     * Each comment starts a new group with all properties following it until the next comment.
      *
      * @param entries List of property entries
      * @return List of property groups
      */
     fun groupProperties(entries: List<PropertyEntry>): List<PropertyGroup> {
-        val groupsWithComments = mutableMapOf<String, MutableList<PropertyEntry>>()
-        var lastComment: PropertyEntry? = null
+        val groups = mutableListOf<PropertyGroup>()
+        val currentGroupEntries = mutableListOf<PropertyEntry>()
+        var groupName = "Sin prefijo"
+        var groupIndex = 0
         
         entries.forEach { entry ->
-            if (entry.isComment) {
-                // Store comment to associate with next property
-                lastComment = entry
-            } else if (entry.key.isNotEmpty()) {
-                val prefix = extractPrefix(entry.key)
-                val list = groupsWithComments.getOrPut(prefix) { mutableListOf() }
-                
-                // Add comment if exists before this property
-                if (lastComment != null && lastComment!!.rawLine.trim().isNotEmpty()) {
-                    list.add(lastComment!!)
-                    lastComment = null
+            if (entry.isComment && entry.rawLine.trim().isNotEmpty()) {
+                // Found a comment - if we have accumulated entries, save them as a group
+                if (currentGroupEntries.isNotEmpty()) {
+                    groups.add(PropertyGroup(
+                        prefix = groupName,
+                        entries = currentGroupEntries.toList()
+                    ))
+                    currentGroupEntries.clear()
+                    groupIndex++
                 }
                 
-                // Add the property
-                list.add(entry)
+                // Start new group with this comment
+                val commentText = entry.rawLine.trim().removePrefix("#").trim()
+                groupName = commentText.ifEmpty { "Grupo $groupIndex" }
+                currentGroupEntries.add(entry)
+            } else if (!entry.isComment && entry.key.isNotEmpty()) {
+                // Add property to current group
+                currentGroupEntries.add(entry)
             }
         }
         
-        // Sort groups: no prefix first, then numeric prefixes
-        val sortedKeys = groupsWithComments.keys.sortedWith(compareBy { key ->
-            if (key.isEmpty()) -1
-            else key.removeSuffix(".").toIntOrNull() ?: Int.MAX_VALUE
-        })
-        
-        return sortedKeys.map { key ->
-            PropertyGroup(
-                prefix = if (key.isEmpty()) "Sin prefijo" else key,
-                entries = groupsWithComments[key]!!.sortedBy { it.lineNumber }
-            )
+        // Add last group if not empty
+        if (currentGroupEntries.isNotEmpty()) {
+            groups.add(PropertyGroup(
+                prefix = groupName,
+                entries = currentGroupEntries.toList()
+            ))
         }
+        
+        return groups
     }
     
     /**

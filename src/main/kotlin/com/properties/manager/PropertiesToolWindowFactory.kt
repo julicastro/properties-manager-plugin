@@ -74,9 +74,9 @@ class PropertiesToolWindowFactory : ToolWindowFactory {
             
             // Add groups
             groups.forEach { group ->
-                // Collect property entries (non-comments) for this group
-                val propertyEntries = group.entries.filter { !it.isComment }
-                val propertyCheckboxes = mutableListOf<JBCheckBox>()
+                // Collect property entries and checkboxes for this group
+                data class PropertyCheckbox(val entry: PropertiesFileReader.PropertyEntry, val checkbox: JBCheckBox)
+                val propertyCheckboxes = mutableListOf<PropertyCheckbox>()
                 
                 // Properties and comments in group
                 group.entries.forEach { entry ->
@@ -92,11 +92,15 @@ class PropertiesToolWindowFactory : ToolWindowFactory {
                             val masterCheckbox = JBCheckBox()
                             masterCheckbox.addActionListener {
                                 val isSelected = masterCheckbox.isSelected
-                                propertyCheckboxes.forEach { cb ->
-                                    if (cb.isSelected != isSelected) {
-                                        cb.isSelected = isSelected
-                                        cb.doClick()
+                                // Update all properties in this group
+                                propertyCheckboxes.forEach { (propEntry, cb) ->
+                                    cb.isSelected = isSelected
+                                    val newValue = if (isSelected) {
+                                        PropertyValueResolver.resolveValue(propEntry.key)
+                                    } else {
+                                        PropertyValueResolver.resolveEmptyValue()
                                     }
+                                    fileUpdater.updateProperty(propertiesFile, propEntry.key, newValue)
                                 }
                             }
                             
@@ -125,7 +129,7 @@ class PropertiesToolWindowFactory : ToolWindowFactory {
                             fileUpdater.updateProperty(propertiesFile, entry.key, newValue)
                         }
                         
-                        propertyCheckboxes.add(checkbox)
+                        propertyCheckboxes.add(PropertyCheckbox(entry, checkbox))
                         contentPanel.add(checkbox, gbc)
                         gbc.gridy++
                     }
@@ -168,7 +172,9 @@ class PropertiesToolWindowFactory : ToolWindowFactory {
             val messagePanel = JPanel(BorderLayout())
             val label = JBLabel(
                 "<html><center>No se encontró el archivo app.properties<br/>" +
-                "Ruta esperada: src/main/resources/properties/app.properties</center></html>"
+                "<br/>Rutas buscadas:<br/>" +
+                "• src/main/resources/properties/app.properties<br/>" +
+                "• test-project/src/main/resources/properties/app.properties</center></html>"
             )
             label.horizontalAlignment = JBLabel.CENTER
             messagePanel.add(label, BorderLayout.CENTER)
