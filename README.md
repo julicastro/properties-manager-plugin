@@ -44,6 +44,10 @@ src/main/resources/META-INF/
 
 Ver instrucciones completas en [INSTALLATION.md](INSTALLATION.md)
 
+### Para Desarrolladores - Crear Releases
+
+Ver guía completa en [RELEASE.md](RELEASE.md)
+
 **Instalación rápida con auto-update:**
 
 1. En IntelliJ: `Settings → Plugins → ⚙️ → Manage Plugin Repositories`

@@ -1,8 +1,11 @@
 <idea-plugin>
     <id>com.properties.manager</id>
     <name>Properties Manager - Goose Edition</name>
-    <version>1.0.0</version>
+    <version>1.0.2</version>
     <vendor email="properties@manager.com" url="https://github.com">Properties Manager Team</vendor>
+    
+    <!-- Plugin icon shown in plugin list -->
+    <icon path="/icons/goose.png"/>
 
     <description><![CDATA[
         <h3>🦆 Gestiona tus archivos app.properties de forma interactiva</h3>
@@ -32,12 +35,20 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h4>Versión 1.0.2</h4>
+        <ul>
+            <li>🦆 Icono de ganso ahora visible en lista de plugins</li>
+        </ul>
+        <h4>Versión 1.0.1</h4>
+        <ul>
+            <li>🐛 Corregido checkbox maestro que afectaba grupos incorrectos</li>
+            <li>📋 Agrupación ahora respeta comentarios del archivo</li>
+            <li>🔄 Preserva orden original del app.properties</li>
+        </ul>
         <h4>Versión 1.0.0</h4>
         <ul>
             <li>✨ Versión inicial del plugin</li>
-            <li>🦆 Icono de ganso personalizado</li>
             <li>📝 Soporte para properties .site, .user y .app</li>
-            <li>🎯 Agrupación automática por prefijos</li>
         </ul>
     ]]></change-notes>
 
