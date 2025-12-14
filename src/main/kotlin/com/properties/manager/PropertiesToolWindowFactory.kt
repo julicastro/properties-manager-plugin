@@ -166,15 +166,15 @@ class PropertiesToolWindowFactory : ToolWindowFactory {
         }
         
         /**
-         * Shows message when app.properties file is not found.
+         * Shows message when properties file is not found.
          */
         private fun showNotFoundMessage() {
             val messagePanel = JPanel(BorderLayout())
             val label = JBLabel(
-                "<html><center>No se encontró el archivo app.properties<br/>" +
+                "<html><center>No se encontró el archivo de properties<br/>" +
                 "<br/>Rutas buscadas:<br/>" +
-                "• src/main/resources/properties/app.properties<br/>" +
-                "• test-project/src/main/resources/properties/app.properties</center></html>"
+                "• test-project/src/main/resources/properties/app.properties<br/>" +
+                "• core/app-shared/shared/config/src/main/resources/category.properties</center></html>"
             )
             label.horizontalAlignment = JBLabel.CENTER
             messagePanel.add(label, BorderLayout.CENTER)

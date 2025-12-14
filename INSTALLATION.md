@@ -12,7 +12,7 @@
    - Hacer clic en **`+`**
    - Agregar esta URL:
      ```
-     https://raw.githubusercontent.com/julicastro/properties-manager-plugin/master/updatePlugins.xml
+     https://raw.githubusercontent.com/julianemanue_meli/properties-manager-plugin/master/updatePlugins.xml
      ```
    - Hacer clic en **OK**
 
@@ -30,7 +30,7 @@
 ### Opción 2: Instalación Manual (Sin Auto-Update)
 
 1. **Descargar el plugin:**
-   - Ir a [Releases](https://github.com/julicastro/properties-manager-plugin/releases)
+   - Ir a [Releases](https://github.com/julianemanue_meli/properties-manager-plugin/releases)
    - Descargar el archivo `.zip` de la última versión
 
 2. **Instalar en IntelliJ:**
@@ -43,9 +43,10 @@
 
 ## 🔧 Uso del Plugin
 
-1. **Abrir un proyecto** que contenga:
+1. **Abrir un proyecto** que contenga archivos `.properties` en alguna de estas ubicaciones:
    ```
-   src/main/resources/properties/app.properties
+   core/app-shared/shared/config/src/main/resources/category.properties
+   test-project/src/main/resources/properties/app.properties
    ```
 
 2. **Abrir el panel lateral:**
@@ -64,14 +65,14 @@
 
 | Property contiene | Valor automático |
 |-------------------|------------------|
-| `.site` | `MLA` |
-| `.user` | `1,2,3,4,5,6,7,8,9,0` |
-| `.app` | `LIST,LIST_WEBVIEW` |
+| `.sites` | `MLA,MLB,MLC,MLM,MLU` |
+| `.users` | `0,1,2,3,4,5,6,7,8,9` |
+| `.list.modes` | `LIST,LIST_WEBVIEW` |
 
 ---
 
 ## 🐛 Soporte
 
 Si encuentras problemas, reporta un issue en:
-https://github.com/julicastro/properties-manager-plugin/issues
+https://github.com/julianemanue_meli/properties-manager-plugin/issues
 

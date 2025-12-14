@@ -35,6 +35,10 @@ tasks {
         sinceBuild.set("232")
         untilBuild.set("")
     }
+    
+    buildSearchableOptions {
+        enabled = false
+    }
 
     signPlugin {
         certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))

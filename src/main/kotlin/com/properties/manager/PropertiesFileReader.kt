@@ -11,10 +11,10 @@ import java.io.InputStreamReader
 class PropertiesFileReader(private val project: Project) {
     
     companion object {
-        // Multiple possible paths to search for app.properties
+        // Multiple possible paths to search for properties files
         private val PROPERTIES_PATHS = listOf(
-            "src/main/resources/properties/app.properties",  // Original path
-            "test-project/src/main/resources/properties/app.properties"  // Test project path
+            "test-project/src/main/resources/properties/app.properties",  // Test project path
+            "core/app-shared/shared/config/src/main/resources/category.properties"  // Category properties path
         )
     }
     

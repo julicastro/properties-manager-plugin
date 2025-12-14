@@ -13,9 +13,9 @@ object PropertyValueResolver {
      */
     fun resolveValue(key: String): String {
         return when {
-            key.contains(".site", ignoreCase = true) -> "MLA,MLB,MLC,MLM,MLU"
-            key.contains(".user", ignoreCase = true) -> "1,2,3,4,5,6,7,8,9,0"
-            key.contains(".app", ignoreCase = true) -> "LIST,LIST_WEBVIEW"
+            key.contains(".sites", ignoreCase = true) -> "MLA,MLB,MLC,MLM,MLU"
+            key.contains(".users", ignoreCase = true) -> "0,1,2,3,4,5,6,7,8,9"
+            key.contains(".list.modes", ignoreCase = true) -> "LIST,LIST_WEBVIEW"
             else -> ""
         }
     }

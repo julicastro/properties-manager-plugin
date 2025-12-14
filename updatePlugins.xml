@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugins>
-    <plugin id="com.properties.manager" url="https://github.com/julicastro/properties-manager-plugin/releases/download/v1.0.2/properties-manager-plugin-1.0.2.zip" version="1.0.2">
+    <plugin id="com.properties.manager" url="https://github.com/julianemanue_meli/properties-manager-plugin/releases/download/v1.0.0/properties-manager-plugin-1.0.0.zip" version="1.0.0">
         <name>Properties Manager - Goose Edition</name>
         <description><![CDATA[
             Gestiona archivos app.properties de forma interactiva con checkboxes.
         ]]></description>
-        <vendor email="properties@manager.com" url="https://github.com/julicastro/properties-manager-plugin">Properties Manager Team</vendor>
+        <vendor email="julianemanuel.castro@mercadolibre.com" url="https://github.com/julianemanue_meli/properties-manager-plugin">Properties Manager Team</vendor>
         <idea-version since-build="232" until-build=""/>
         <change-notes><![CDATA[
-            <h4>Versión 1.0.2</h4>
-            <ul>
-                <li>🦆 Icono de ganso ahora visible en lista de plugins</li>
-            </ul>
-            <h4>Versión 1.0.1</h4>
-            <ul>
-                <li>🐛 Corregido checkbox maestro que afectaba grupos incorrectos</li>
-                <li>📋 Agrupación ahora respeta comentarios del archivo</li>
-                <li>🔄 Preserva orden original del app.properties</li>
-            </ul>
             <h4>Versión 1.0.0</h4>
             <ul>
                 <li>✨ Versión inicial del plugin</li>

@@ -1,54 +1,52 @@
 <idea-plugin>
     <id>com.properties.manager</id>
     <name>Properties Manager - Goose Edition</name>
-    <version>1.0.2</version>
+    <version>1.0.0</version>
     <vendor email="properties@manager.com" url="https://github.com">Properties Manager Team</vendor>
-    
-    <!-- Plugin icon shown in plugin list -->
-    <icon path="/icons/goose.png"/>
 
     <description><![CDATA[
-        <h3>🦆 Gestiona tus archivos app.properties de forma interactiva</h3>
-        <p>Plugin diseñado para facilitar la edición de archivos <code>app.properties</code> mediante checkboxes dinámicos.</p>
+        <h3>🦆 Gestiona tus archivos .properties de forma interactiva</h3>
+        <p>Plugin diseñado para facilitar la edición de archivos <code>.properties</code> mediante checkboxes dinámicos agrupados por comentarios.</p>
         
         <h4>Características principales:</h4>
         <ul>
-            <li>📁 Lectura automática de <code>src/main/resources/properties/app.properties</code></li>
-            <li>🔢 Agrupación inteligente por prefijo numérico (1., 2., 3., etc.)</li>
+            <li>📁 Lectura automática de archivos properties en múltiples ubicaciones</li>
+            <li>📋 Agrupación inteligente por comentarios (cada comentario agrupa sus properties)</li>
             <li>✅ Auto-completado de valores según convenciones:
                 <ul>
-                    <li><code>.site</code> → <code>MLA</code></li>
-                    <li><code>.user</code> → <code>1,2,3,4,5,6,7,8,9,0</code></li>
-                    <li><code>.app</code> → <code>LIST,LIST_WEBVIEW</code></li>
+                    <li><code>.sites</code> → <code>MLA,MLB,MLC,MLM,MLU</code></li>
+                    <li><code>.users</code> → <code>0,1,2,3,4,5,6,7,8,9</code></li>
+                    <li><code>.list.modes</code> → <code>LIST,LIST_WEBVIEW</code></li>
                 </ul>
             </li>
+            <li>🎛️ Checkbox maestro por grupo para activar/desactivar todo simultáneamente</li>
             <li>💾 Preserva comentarios y estructura del archivo</li>
             <li>🔄 Botón de refrescar para recargar cambios</li>
         </ul>
         
         <h4>Cómo usar:</h4>
         <ol>
-            <li>Abre un proyecto con el archivo <code>app.properties</code> en la ruta esperada</li>
+            <li>Abre un proyecto con archivos <code>.properties</code></li>
             <li>Busca el panel "Properties Manager" en el lateral derecho</li>
-            <li>Marca/desmarca los checkboxes para activar/desactivar properties</li>
+            <li>Marca/desmarca checkboxes individuales o usa el checkbox del comentario para todo el grupo</li>
         </ol>
+        
+        <h4>Rutas soportadas:</h4>
+        <ul>
+            <li><code>core/app-shared/shared/config/src/main/resources/category.properties</code></li>
+            <li><code>test-project/src/main/resources/properties/app.properties</code></li>
+        </ul>
     ]]></description>
 
     <change-notes><![CDATA[
-        <h4>Versión 1.0.2</h4>
-        <ul>
-            <li>🦆 Icono de ganso ahora visible en lista de plugins</li>
-        </ul>
-        <h4>Versión 1.0.1</h4>
-        <ul>
-            <li>🐛 Corregido checkbox maestro que afectaba grupos incorrectos</li>
-            <li>📋 Agrupación ahora respeta comentarios del archivo</li>
-            <li>🔄 Preserva orden original del app.properties</li>
-        </ul>
         <h4>Versión 1.0.0</h4>
         <ul>
             <li>✨ Versión inicial del plugin</li>
-            <li>📝 Soporte para properties .site, .user y .app</li>
+            <li>📝 Soporte para properties .sites, .users y .list.modes</li>
+            <li>🦆 Icono de ganso en la toolWindow</li>
+            <li>📋 Agrupación inteligente por comentarios</li>
+            <li>🎛️ Checkbox maestro por grupo para activar/desactivar todo</li>
+            <li>💾 Preserva comentarios y estructura del archivo</li>
         </ul>
     ]]></change-notes>
 

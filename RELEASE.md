@@ -27,7 +27,7 @@ Cambiar la versión en **2 archivos**:
 #### A. `gradle.properties`
 
 ```properties
-pluginVersion = 1.0.X  # ← Cambiar aquí (ej: 1.0.2 → 1.0.3)
+pluginVersion = 1.0.X  # ← Cambiar aquí (ej: 1.0.0 → 1.0.1)
 ```
 
 #### B. `src/main/resources/META-INF/plugin.xml`
@@ -61,12 +61,12 @@ Actualizar **2 lugares**:
 
 **Comando:**
 ```bash
-.\gradlew.bat clean buildPlugin
+./gradlew clean buildPlugin
 ```
 
 **Resultado:**
 ```
-build\distributions\properties-manager-plugin-1.0.X.zip
+build/distributions/properties-manager-plugin-1.0.X.zip
 ```
 
 ✅ Verificar que el archivo `.zip` se creó correctamente.
@@ -275,13 +275,13 @@ Verificar:
 
 ### Build falla
 
-**Problema:** `.\gradlew.bat buildPlugin` falla.
+**Problema:** `./gradlew buildPlugin` falla.
 
 **Soluciones:**
 
 1. **Limpiar build anterior:**
    ```bash
-   .\gradlew.bat clean
+   ./gradlew clean
    ```
 
 2. **Verificar Java 17:**
@@ -291,7 +291,7 @@ Verificar:
 
 3. **Ver errores completos:**
    ```bash
-   .\gradlew.bat buildPlugin --stacktrace
+   ./gradlew buildPlugin --stacktrace
    ```
 
 ### Tag ya existe
@@ -382,7 +382,7 @@ Usa versionado semántico: `MAJOR.MINOR.PATCH`
 
 ### Testing Antes de Release
 
-1. Ejecutar `.\gradlew.bat runIde`
+1. Ejecutar `./gradlew runIde`
 2. Probar todas las funcionalidades
 3. Verificar que no hay errores
 4. Probar en proyecto real (`test-project`)
