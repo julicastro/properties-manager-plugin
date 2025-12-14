@@ -8,7 +8,7 @@
         <vendor email="julianemanuel.castro@mercadolibre.com" url="https://github.com/julianemanue_meli/properties-manager-plugin">Properties Manager Team</vendor>
         <idea-version since-build="232" until-build=""/>
         <change-notes><![CDATA[
-            <h4>Versión 1.0.0</h4>
+            <h4>Versión 1.0.3</h4>
             <ul>
                 <li>✨ Versión inicial del plugin</li>
                 <li>📝 Soporte para properties .site, .user y .app</li>
