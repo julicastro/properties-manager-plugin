@@ -53,23 +53,29 @@ tasks {
     register("updatePluginsXml") {
         doLast {
             val version = project.version.toString()
+            val githubUsername = providers.gradleProperty("githubUsername").get()
+            val pluginName = providers.gradleProperty("pluginName").get()
             val file = file("updatePlugins.xml")
             var content = file.readText()
             
+            val repoUrl = "https://github.com/$githubUsername/$pluginName"
+            val downloadUrl = "$repoUrl/releases/download/v$version/$pluginName-$version.zip"
+            
             // Actualizar URL del plugin
             content = content.replace(
-                Regex("""url="[^"]*v[\d.]+/properties-manager-plugin-[\d.]+\.zip""""),
-                """url="https://github.com/julianemanue_meli/properties-manager-plugin/releases/download/v$version/properties-manager-plugin-$version.zip""""
+                Regex("""url="https://github\.com/[^/]+/[^/]+/releases/download/v[\d.]+/[^"]+""""),
+                """url="$downloadUrl""""
             )
             
-            // Actualizar atributo version en el tag <plugin>
+            // Actualizar vendor url
             content = content.replace(
-                Regex("""<plugin id="com\.properties\.manager"[^>]*version="[\d.]+" """),
-                """<plugin id="com.properties.manager" url="https://github.com/julianemanue_meli/properties-manager-plugin/releases/download/v$version/properties-manager-plugin-$version.zip" version="$version" """
+                Regex("""<vendor[^>]*url="https://github\.com/[^/]+/[^"]+" """),
+                """<vendor email="julianemanuel.castro@mercadolibre.com" url="$repoUrl" """
             )
             
             file.writeText(content)
             println("✅ updatePlugins.xml actualizado a versión $version")
+            println("   URL: $downloadUrl")
         }
     }
 }

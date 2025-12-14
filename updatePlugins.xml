@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugins>
-    <plugin id="com.properties.manager" url="https://github.com/julianemanue_meli/properties-manager-plugin/releases/download/v1.0.3/properties-manager-plugin-1.0.3.zip" version="1.0.3">
+    <plugin id="com.properties.manager" url="https://github.com/julicastro/properties-manager-plugin/releases/download/v1.0.3/properties-manager-plugin-1.0.3.zip" version="1.0.3">
         <name>Properties Manager - Goose Edition</name>
         <description><![CDATA[
             Gestiona archivos app.properties de forma interactiva con checkboxes.
         ]]></description>
-        <vendor email="julianemanuel.castro@mercadolibre.com" url="https://github.com/julianemanue_meli/properties-manager-plugin">Properties Manager Team</vendor>
+        <vendor email="julianemanuel.castro@mercadolibre.com" url="https://github.com/julicastro/properties-manager-plugin">Properties Manager Team</vendor>
         <idea-version since-build="232" until-build=""/>
         <change-notes><![CDATA[
             <h4>Versión 1.0.3</h4>
             <ul>
+                <li>Checkbox maestro de grupo: Corregido error donde el checkbox maestro no actualizaba correctamente el estado de todos los checkboxes del grupo</li>
+                <li>Sincronización de estado: Solucionado problema de sincronización entre el checkbox maestro y las properties individuales al refrescar</li>
+                <li>Actualización de archivo: Corregido bug que causaba inconsistencias al activar/desactivar múltiples properties simultáneamente mediante el checkbox grupal</li>
+                <li>Centralización de versiones: Sistema automatizado de versionado configurable desde gradle.properties</li>
+            </ul>
+            <h4>Versión 1.0.0</h4>
+            <ul>
                 <li>✨ Versión inicial del plugin</li>
-                <li>📝 Soporte para properties .site, .user y .app</li>
+                <li>📝 Soporte para properties .sites, .users y .list.modes</li>
             </ul>
         ]]></change-notes>
     </plugin>
