@@ -1,7 +1,6 @@
 <idea-plugin>
     <id>com.properties.manager</id>
     <name>Properties Manager - Goose Edition</name>
-    <version>1.0.0</version>
     <vendor email="properties@manager.com" url="https://github.com">Properties Manager Team</vendor>
 
     <description><![CDATA[
@@ -39,6 +38,12 @@
     ]]></description>
 
     <change-notes><![CDATA[
+        <h4>Versión 1.0.3</h4>
+        <ul>
+            <li>Checkbox maestro de grupo: Corregido error donde el checkbox maestro no actualizaba correctamente el estado de todos los checkboxes del grupo</li>
+            <li>Sincronización de estado: Solucionado problema de sincronización entre el checkbox maestro y las properties individuales al refrescar</li>
+            <li>Actualización de archivo: Corregido bug que causaba inconsistencias al activar/desactivar múltiples properties simultáneamente mediante el checkbox grupal</li>
+        </ul>
         <h4>Versión 1.0.0</h4>
         <ul>
             <li>✨ Versión inicial del plugin</li>

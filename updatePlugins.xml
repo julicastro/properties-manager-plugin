@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugins>
-    <plugin id="com.properties.manager" url="https://github.com/julianemanue_meli/properties-manager-plugin/releases/download/v1.0.0/properties-manager-plugin-1.0.0.zip" version="1.0.0">
+    <plugin id="com.properties.manager" url="https://github.com/julianemanue_meli/properties-manager-plugin/releases/download/v1.0.3/properties-manager-plugin-1.0.3.zip" version="1.0.3">
         <name>Properties Manager - Goose Edition</name>
         <description><![CDATA[
             Gestiona archivos app.properties de forma interactiva con checkboxes.

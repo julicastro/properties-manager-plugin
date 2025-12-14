@@ -49,5 +49,28 @@ tasks {
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
     }
+    
+    register("updatePluginsXml") {
+        doLast {
+            val version = project.version.toString()
+            val file = file("updatePlugins.xml")
+            var content = file.readText()
+            
+            // Actualizar URL del plugin
+            content = content.replace(
+                Regex("""url="[^"]*v[\d.]+/properties-manager-plugin-[\d.]+\.zip""""),
+                """url="https://github.com/julianemanue_meli/properties-manager-plugin/releases/download/v$version/properties-manager-plugin-$version.zip""""
+            )
+            
+            // Actualizar atributo version en el tag <plugin>
+            content = content.replace(
+                Regex("""<plugin id="com\.properties\.manager"[^>]*version="[\d.]+" """),
+                """<plugin id="com.properties.manager" url="https://github.com/julianemanue_meli/properties-manager-plugin/releases/download/v$version/properties-manager-plugin-$version.zip" version="$version" """
+            )
+            
+            file.writeText(content)
+            println("✅ updatePlugins.xml actualizado a versión $version")
+        }
+    }
 }
 
